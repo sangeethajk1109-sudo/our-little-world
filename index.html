@@ -13,7 +13,7 @@ button{font:inherit;cursor:pointer}a{color:inherit;text-decoration:none}.wrap{ma
 .kicker,.eyebrow{font:11px Arial;letter-spacing:.24em;text-transform:uppercase;color:#bb5a80}.hero h1{font-size:clamp(48px,9vw,88px);font-weight:normal;line-height:.96;color:var(--deep);margin:18px 0}.hero h1 em{color:var(--rose);font-style:italic}.hero p{font-size:18px;line-height:1.7;max-width:620px;margin:12px auto 22px}.btn{border:0;background:linear-gradient(135deg,#e45d91,#c63e76);color:white;padding:13px 22px;border-radius:28px;box-shadow:0 9px 20px #c4487933}.btn.light{background:white;color:var(--deep);border:1px solid var(--line);box-shadow:none}
 section{padding:65px 0 0;scroll-margin-top:20px}.head{text-align:center;margin-bottom:26px}.head h2{font-size:clamp(32px,5vw,48px);font-weight:normal;color:var(--deep);margin:10px 0}.head p{max-width:650px;margin:auto;line-height:1.65;color:#926477}
 .paper{padding:clamp(22px,5vw,42px);position:relative}.paper:before{content:"";position:absolute;inset:10px;border:1px dashed #edc2d1;border-radius:20px;pointer-events:none}.paper>*{position:relative}.letter{font-size:17px;line-height:1.95;white-space:pre-line}.sign{font-style:italic;font-size:23px;color:var(--rose);margin-top:20px}
-.video-panel{padding:14px;max-width:760px;margin:28px auto 0}.video-panel video{width:100%;max-height:450px;display:block;object-fit:cover;border-radius:18px;background:#f6d8e2}.video-panel p{text-align:center;line-height:1.6;margin:12px 8px 3px;color:#95677b}
+.video-panel{padding:14px;max-width:760px;margin:28px auto 0}.video-panel video{width:100%;max-height:620px;display:block;object-fit:contain;border-radius:18px;background:#f6d8e2;min-height:220px}.video-play-btn{display:block;margin:14px auto 4px}.video-panel p{text-align:center;line-height:1.6;margin:12px 8px 3px;color:#95677b}
 .timeline{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.chapter{padding:23px;text-align:left;transition:.25s;position:relative;overflow:hidden}.chapter:hover{transform:translateY(-4px);box-shadow:0 22px 48px #8b31532b}.chapter .num{font:11px Arial;letter-spacing:.2em;color:#c45d84}.chapter h3{font-size:23px;font-weight:normal;color:var(--deep);margin:10px 0 7px}.chapter p{font:14px/1.65 Arial;color:#91697a;margin:0}.chapter .read{display:inline-block;margin-top:14px;font:12px Arial;color:#c14578}
 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.memory{border:1px solid #efc9d6;border-radius:17px;background:#fffaf8;padding:9px 9px 13px;box-shadow:0 12px 28px #8b31531b;transform:rotate(var(--tilt));transition:.25s;cursor:pointer}.memory:hover{transform:rotate(0) translateY(-5px) scale(1.015)}.memory img{width:100%;height:260px;object-fit:cover;display:block;border-radius:11px}.memory figcaption{text-align:center;padding:11px 5px 1px;color:#8c526c;font-size:14px;line-height:1.4}.hint{text-align:center;font:12px Arial;color:#a57989;margin:15px}
 .special{display:grid;grid-template-columns:1fr 1fr;gap:15px}.special button{background:#fffaf8;border:1px solid var(--line);border-radius:18px;padding:20px;text-align:left;color:var(--deep);box-shadow:var(--shadow)}.special strong{display:block;font-size:19px;font-weight:normal;margin:8px 0}.special small{font:13px/1.5 Arial;color:#987183}
@@ -32,7 +32,7 @@ body{min-height:100%;overflow-y:auto;overscroll-behavior-y:auto}
 .modal.show{display:flex}
 .modal-card{width:min(100%,760px);max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;flex:0 0 auto}
 .modal-card .body{white-space:pre-wrap;overflow-wrap:anywhere;padding-bottom:14px}
-body.modal-open{overflow:hidden}
+body.modal-open{overflow:hidden;position:fixed;width:100%;left:0;right:0}
 .letter-stage{display:grid;place-items:center;padding:18px 10px 10px;min-height:330px}
 .envelope{width:min(100%,430px);height:250px;position:relative;border:0;background:transparent;padding:0;perspective:1000px;filter:drop-shadow(0 18px 22px #8b31532b);animation:envelopeFloat 4s ease-in-out infinite}
 .envelope-back{position:absolute;inset:35px 0 35px;background:linear-gradient(145deg,#f4b2c8,#e77fa5);border-radius:14px;z-index:1}
@@ -72,6 +72,56 @@ body.modal-open{overflow:hidden}
  .envelope:hover{transform:scale(.86)}
 }
 
+
+/* Mobile-friendly opening screen and natural page scrolling */
+html, body { min-height:100%; overflow-x:hidden; overflow-y:auto; }
+.opening {
+  overflow-y:auto !important;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-y:contain;
+  align-items:flex-start !important;
+  padding-top:max(18px, env(safe-area-inset-top));
+  padding-bottom:max(24px, env(safe-area-inset-bottom));
+}
+.open-card {
+  margin:auto;
+  flex:0 0 auto;
+  max-height:none;
+}
+.mini-video {
+  width:100%;
+  max-width:460px;
+  height:auto;
+  max-height:none;
+  aspect-ratio:16/9;
+  object-fit:contain;
+  touch-action:pan-y;
+}
+.video-panel {
+  position:relative;
+  width:100%;
+  overflow:visible;
+  scroll-margin-top:24px;
+}
+.video-panel video {
+  position:relative !important;
+  width:100%;
+  height:auto;
+  max-height:70vh;
+  max-height:70dvh;
+  min-height:180px;
+  object-fit:contain;
+  touch-action:pan-y;
+}
+section#moving-memory { scroll-margin-top:24px; }
+@media(max-width:700px) {
+  .opening { display:flex !important; }
+  .open-card { width:100%; }
+  .video-panel { padding:10px; }
+  .video-panel video { max-height:65vh; max-height:65dvh; }
+}
+
 </style></head>
 <body>
 <div class="opening" id="opening">
@@ -79,7 +129,7 @@ body.modal-open{overflow:hidden}
   <span class="open-heart">♡</span><div class="kicker">a little story, written before our first hello</div>
   <h1>Our Story,<br><em style="color:#d94e83">Amal</em> ♡</h1>
   <p>To the boy I once thought I would say no to… and the person I now want beside me for a whole lifetime. I made this little world from my diary, our pictures, and all the love I couldn't fit into one message.</p>
-  <video class="mini-video" src="assets/our-memory.mp4" controls playsinline preload="metadata" poster="assets/our-selfie.png"></video>
+  <video id="openingVideo" class="mini-video" controls playsinline webkit-playsinline preload="auto" poster="assets/video-poster.jpg"><source src="assets/our-memory.mp4" type="video/mp4">Your browser does not support MP4 video.</video>
   <p style="font-size:13px;margin-top:0">A little moving memory before you enter our story ♡</p>
   <div class="open-actions"><button class="btn" onclick="enterStory()">Open our little world ♡</button><button class="btn light" onclick="playIntro()">Play our special video</button></div>
  </div>
@@ -103,7 +153,7 @@ With all my love,</div><div class="sign">Your Sangi 🤍</div></div>
 </section>
 <section id="chapters"><div class="head"><div class="eyebrow">turn the pages of my heart</div><h2>Our story, page by page</h2><p>Tap each little chapter to open the letter I wrote for you. Take your time, my love.</p></div><div class="timeline" id="timeline"></div></section>
 <section id="photos"><div class="head"><div class="eyebrow">moments imagined · moments cherished</div><h2>Our little gallery</h2><p>Tap every picture. Each one has a tiny letter waiting behind it. Some are imagined moments, some are our real little video-call memories.</p></div><div class="gallery" id="gallery"></div><p class="hint">♡ Every picture has a little message. Tap to open it. ♡</p></section>
-<section id="moving-memory"><div class="head"><div class="eyebrow">a little something in motion</div><h2>One more time, press play</h2><p>Because sometimes a moving moment says what a photograph cannot.</p></div><div class="video-panel"><video src="assets/our-memory.mp4" controls playsinline preload="metadata" poster="assets/our-selfie.png"></video><p>For the calls, smiles, silly little moments and all the feelings in between. A tiny memory I wanted to keep close. ♡</p></div></section>
+<section id="moving-memory"><div class="head"><div class="eyebrow">a little something in motion</div><h2>One more time, press play</h2><p>Because sometimes a moving moment says what a photograph cannot.</p></div><div class="video-panel"><video id="mainMemoryVideo" controls playsinline webkit-playsinline preload="auto" poster="assets/video-poster.jpg"><source src="assets/our-memory.mp4" type="video/mp4">Your browser does not support MP4 video.</video><button class="btn video-play-btn" type="button" onclick="playMemoryVideo()">▶ Play our memory ♡</button><p>For the calls, smiles, silly little moments and all the feelings in between. A tiny memory I wanted to keep close. ♡</p></div></section>
 <section id="little-notes"><div class="head"><div class="eyebrow">open whenever you need a little love</div><h2>Little letters for you</h2><p>Small notes, folded with love, for the days you need me close.</p></div><div class="special">
 <button onclick="openNote('When you miss me','If I could, I would be right next to you and give you the longest hug. Until then, close your eyes and imagine me holding you. Miles can keep us apart for now, but they cannot change how much I love you. I am right here, always cheering for you. ♡')"><span>💌</span><strong>Open when you miss me</strong><small>A little hug tucked inside a letter.</small></button>
 <button onclick="openNote('When your day feels hard','Take a breath, my love. You do not have to figure everything out at once. I am proud of you, even on the days when things do not go as planned. Be gentle with yourself today. Sending you the biggest hug and all my love. ♡')"><span>🌷</span><strong>Open when your day is hard</strong><small>A softer moment, just for you.</small></button>
@@ -137,8 +187,10 @@ function openModal(sub,title,body){const modal=document.getElementById('modal'),
 function openFinalLetter(){const env=document.querySelector('.envelope');env.classList.add('opening');setTimeout(()=>{openModal('A LETTER SEALED WITH ALL MY LOVE', 'My Amal,', finalLetter);document.getElementById('modalCard').classList.add('letter-modal-card');document.getElementById('scrollHint').textContent='keep scrolling · every word is for you ♡';document.getElementById('modalCard').scrollTop=0;env.classList.remove('opening')},620)}
 function openNote(title,body){openModal('A FOLDED LITTLE LETTER',title,body)}
 function closeModal(){document.getElementById('modal').classList.remove('show');document.body.classList.remove('modal-open')}
-function enterStory(){document.getElementById('opening').classList.add('hide');document.body.style.overflow='';setTimeout(()=>document.getElementById('opening').remove(),900)}
-function playIntro(){const v=document.querySelector('.mini-video');v.play().catch(()=>v.scrollIntoView({behavior:'smooth',block:'center'}))}
+function enterStory(){document.getElementById('opening').classList.add('hide');document.documentElement.style.overflowY='auto';document.body.style.overflowY='auto';document.body.style.overflowX='hidden';setTimeout(()=>document.getElementById('opening').remove(),900)}
+function playIntro(){const v=document.getElementById('openingVideo');v.scrollIntoView({behavior:'smooth',block:'center'});const p=v.play();if(p&&p.catch)p.catch(()=>{v.controls=true;v.focus()})}
+function playMemoryVideo(){const v=document.getElementById('mainMemoryVideo');v.scrollIntoView({behavior:'smooth',block:'center'});v.controls=true;const p=v.play();if(p&&p.catch)p.catch(()=>{v.focus()})}
+for(const v of document.querySelectorAll('video')){v.addEventListener('error',()=>{const msg=document.createElement('p');msg.className='video-error';msg.textContent='If the video does not start, please check your internet connection and tap play again.';v.insertAdjacentElement('afterend',msg)},{once:true});v.addEventListener('click',()=>{if(v.paused){const p=v.play();if(p&&p.catch)p.catch(()=>{})}},{passive:true})}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 function floatHeart(){const h=document.createElement('div');h.className='float-heart';h.textContent=['♡','♥','✧'][Math.floor(Math.random()*3)];h.style.left=Math.random()*100+'vw';h.style.fontSize=(14+Math.random()*22)+'px';h.style.animationDuration=(9+Math.random()*9)+'s';document.body.appendChild(h);setTimeout(()=>h.remove(),19000)}
 setInterval(floatHeart,950);
