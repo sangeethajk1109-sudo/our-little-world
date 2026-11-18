@@ -122,6 +122,21 @@ section#moving-memory { scroll-margin-top:24px; }
   .video-panel video { max-height:65vh; max-height:65dvh; }
 }
 
+
+/* A sweet, tappable cover for the memory video */
+.video-stage{position:relative;width:100%;overflow:hidden;border-radius:22px;background:#f4c4d5;box-shadow:0 12px 30px #8b315322;min-height:220px}
+.video-stage video{width:100%;max-height:620px;min-height:220px;object-fit:contain;background:#f4c4d5;border-radius:22px}
+.video-cover{position:relative;display:block;width:100%;padding:0;border:0;border-radius:22px;overflow:hidden;cursor:pointer;aspect-ratio:16/9;background:#eaa3bd;color:white;text-align:center}
+.video-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;display:block;transition:transform .7s}
+.video-cover:hover img{transform:scale(1.035)}
+.video-cover-shade{position:absolute;inset:0;background:linear-gradient(180deg,#4c183044 0%,#4c183077 52%,#4c1830b8 100%)}
+.video-cover-note{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:18px;text-shadow:0 2px 12px #39112680}
+.video-cover-kicker{font:10px Arial,sans-serif;letter-spacing:.2em;color:#ffeaf1}
+.video-cover-note strong{font:normal clamp(22px,4vw,34px)/1.25 Georgia,serif;color:#fff8fb}
+.video-cover-play{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;padding-left:4px;background:#f8c5d8;color:#8c3157;font:22px Arial;box-shadow:0 5px 20px #3d102b55;border:2px solid #fff2f7}
+.video-cover-note small{font:11px Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#ffeaf1}
+@media(max-width:600px){.video-cover{aspect-ratio:4/5}.video-cover img{object-position:center 35%}.video-cover-note{gap:9px}.video-cover-play{width:49px;height:49px}}
+
 </style></head>
 <body>
 <div class="opening" id="opening">
@@ -153,7 +168,7 @@ With all my love,</div><div class="sign">Your Sangi 🤍</div></div>
 </section>
 <section id="chapters"><div class="head"><div class="eyebrow">turn the pages of my heart</div><h2>Our story, page by page</h2><p>Tap each little chapter to open the letter I wrote for you. Take your time, my love.</p></div><div class="timeline" id="timeline"></div></section>
 <section id="photos"><div class="head"><div class="eyebrow">moments imagined · moments cherished</div><h2>Our little gallery</h2><p>Tap every picture. Each one has a tiny letter waiting behind it. Some are imagined moments, some are our real little video-call memories.</p></div><div class="gallery" id="gallery"></div><p class="hint">♡ Every picture has a little message. Tap to open it. ♡</p></section>
-<section id="moving-memory"><div class="head"><div class="eyebrow">a little something in motion</div><h2>One more time, press play</h2><p>Because sometimes a moving moment says what a photograph cannot.</p></div><div class="video-panel"><video id="mainMemoryVideo" controls playsinline webkit-playsinline preload="auto" poster="assets/video-poster.jpg"><source src="assets/our-memory.mp4" type="video/mp4">Your browser does not support MP4 video.</video><button class="btn video-play-btn" type="button" onclick="playMemoryVideo()">▶ Play our memory ♡</button><p>For the calls, smiles, silly little moments and all the feelings in between. A tiny memory I wanted to keep close. ♡</p></div></section>
+<section id="moving-memory"><div class="head"><div class="eyebrow">a little something in motion</div><h2>One more time, press play</h2><p>Because sometimes a moving moment says what a photograph cannot.</p></div><div class="video-panel"><div class="video-stage"><button class="video-cover" id="videoCover" type="button" onclick="playMemoryVideo()" aria-label="Play our special memory"><img src="assets/video-poster.jpg" alt="A little video-call memory of us"><span class="video-cover-shade"></span><span class="video-cover-note"><span class="video-cover-kicker">A LITTLE MEMORY, JUST FOR YOU</span><strong>Some moments are too special<br>to stay still. ♡</strong><span class="video-cover-play">▶</span><small>tap to play our memory</small></span></button><video id="mainMemoryVideo" controls playsinline webkit-playsinline preload="metadata" poster="assets/video-poster.jpg" style="display:none"><source src="assets/our-memory.mp4" type="video/mp4">Your browser does not support MP4 video.</video></div><p>For the calls, smiles, silly little moments and all the feelings in between. A tiny memory I wanted to keep close. ♡</p></div></section>
 <section id="little-notes"><div class="head"><div class="eyebrow">open whenever you need a little love</div><h2>Little letters for you</h2><p>Small notes, folded with love, for the days you need me close.</p></div><div class="special">
 <button onclick="openNote('When you miss me','If I could, I would be right next to you and give you the longest hug. Until then, close your eyes and imagine me holding you. Miles can keep us apart for now, but they cannot change how much I love you. I am right here, always cheering for you. ♡')"><span>💌</span><strong>Open when you miss me</strong><small>A little hug tucked inside a letter.</small></button>
 <button onclick="openNote('When your day feels hard','Take a breath, my love. You do not have to figure everything out at once. I am proud of you, even on the days when things do not go as planned. Be gentle with yourself today. Sending you the biggest hug and all my love. ♡')"><span>🌷</span><strong>Open when your day is hard</strong><small>A softer moment, just for you.</small></button>
@@ -190,7 +205,7 @@ function openNote(title,body){openModal('A FOLDED LITTLE LETTER',title,body)}
 function closeModal(){const modal=document.getElementById('modal');if(!modal.classList.contains('show'))return;modal.classList.remove('show');document.body.classList.remove('modal-open');document.body.style.top='';window.scrollTo(0,modalReturnY)}
 function enterStory(){document.getElementById('opening').classList.add('hide');document.documentElement.style.overflowY='auto';document.body.style.overflowY='auto';document.body.style.overflowX='hidden';setTimeout(()=>document.getElementById('opening').remove(),900)}
 function playIntro(){const v=document.getElementById('openingVideo');v.scrollIntoView({behavior:'smooth',block:'center'});const p=v.play();if(p&&p.catch)p.catch(()=>{v.controls=true;v.focus()})}
-function playMemoryVideo(){const v=document.getElementById('mainMemoryVideo');v.scrollIntoView({behavior:'smooth',block:'center'});v.controls=true;const p=v.play();if(p&&p.catch)p.catch(()=>{v.focus()})}
+function playMemoryVideo(){const v=document.getElementById('mainMemoryVideo');const cover=document.getElementById('videoCover');v.style.display='block';v.controls=true;if(cover)cover.style.display='none';v.scrollIntoView({behavior:'smooth',block:'center'});const p=v.play();if(p&&p.catch)p.catch(()=>{v.focus()})}
 for(const v of document.querySelectorAll('video')){v.addEventListener('error',()=>{const msg=document.createElement('p');msg.className='video-error';msg.textContent='If the video does not start, please check your internet connection and tap play again.';v.insertAdjacentElement('afterend',msg)},{once:true});v.addEventListener('click',()=>{if(v.paused){const p=v.play();if(p&&p.catch)p.catch(()=>{})}},{passive:true})}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 function floatHeart(){const h=document.createElement('div');h.className='float-heart';h.textContent=['♡','♥','✧'][Math.floor(Math.random()*3)];h.style.left=Math.random()*100+'vw';h.style.fontSize=(14+Math.random()*22)+'px';h.style.animationDuration=(9+Math.random()*9)+'s';document.body.appendChild(h);setTimeout(()=>h.remove(),19000)}
