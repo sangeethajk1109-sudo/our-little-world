@@ -144,7 +144,10 @@ section#moving-memory { scroll-margin-top:24px; }
   <span class="open-heart">♡</span><div class="kicker">a little story, written before our first hello</div>
   <h1>Our Story,<br><em style="color:#d94e83">Amal</em> ♡</h1>
   <p>To the boy I once thought I would say no to… and the person I now want beside me for a whole lifetime. I made this little world from my diary, our pictures, and all the love I couldn't fit into one message.</p>
-  <video id="openingVideo" class="mini-video" controls playsinline webkit-playsinline preload="auto" poster="assets/video-poster.jpg"><source src="assets/our-memory.mp4" type="video/mp4">Your browser does not support MP4 video.</video>
+  <div class="intro-video-stage">
+    <button class="intro-video-cover message-poster" id="introVideoCover" type="button" onclick="playIntro()" aria-label="Play our little love video"><span class="intro-video-note"><small>JUST A LITTLE SOMETHING FOR YOU</small><strong>A tiny video, made with all my love…<br>just for you, Amal. ♡</strong><span class="intro-video-play">▶</span><em>tap to play</em></span></button>
+    <video id="openingVideo" class="mini-video" controls playsinline webkit-playsinline preload="metadata" poster="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5NjAiIGhlaWdodD0iNTQwIiB2aWV3Qm94PSIwIDAgOTYwIDU0MCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iI2Y5ZDVlMSIvPjxzdG9wIG9mZnNldD0iLjU1IiBzdG9wLWNvbG9yPSIjZWQ5ZmJhIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZDk2Zjk4Ii8+PC9saW5lYXJHcmFkaWVudD48cmFkaWFsR3JhZGllbnQgaWQ9Imdsb3ciPjxzdG9wIHN0b3AtY29sb3I9IiNmZmY3ZmEiIHN0b3Atb3BhY2l0eT0iLjgiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmY3ZmEiIHN0b3Atb3BhY2l0eT0iMCIvPjwvcmFkaWFsR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSI5NjAiIGhlaWdodD0iNTQwIiByeD0iMzQiIGZpbGw9InVybCgjZykiLz48Y2lyY2xlIGN4PSIxNTAiIGN5PSI5MCIgcj0iMTkwIiBmaWxsPSJ1cmwoI2dsb3cpIi8+PGNpcmNsZSBjeD0iODMwIiBjeT0iNDcwIiByPSIyMTAiIGZpbGw9InVybCgjZ2xvdykiLz48ZyBmaWxsPSIjZmZmNWY4IiBvcGFjaXR5PSIuNDUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhIiBmb250LXNpemU9IjU2Ij48dGV4dCB4PSI4MiIgeT0iMTcwIj7imaE8L3RleHQ+PHRleHQgeD0iODIwIiB5PSIxNTAiPuKZoTwvdGV4dD48dGV4dCB4PSIxNDUiIHk9IjQ0MCI+4pmhPC90ZXh0Pjx0ZXh0IHg9Ijc3MCIgeT0iNDIwIj7imaE8L3RleHQ+PC9nPjxyZWN0IHg9IjU0IiB5PSI0NSIgd2lkdGg9Ijg1MiIgaGVpZ2h0PSI0NTAiIHJ4PSIyOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmNGY4IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1kYXNoYXJyYXk9IjggMTAiIG9wYWNpdHk9Ii44Ii8+PHRleHQgeD0iNDgwIiB5PSIxNzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmY4ZmIiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjIyIiBsZXR0ZXItc3BhY2luZz0iNSI+SlVTVCBBIExJVFRMRSBTT01FVEhJTkcgRk9SIFlPVTwvdGV4dD48dGV4dCB4PSI0ODAiIHk9IjI1NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmFmZCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNDIiPkEgdGlueSB2aWRlbywgbWFkZSB3aXRoIGFsbCBteSBsb3Zl4oCmPC90ZXh0Pjx0ZXh0IHg9IjQ4MCIgeT0iMzE1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmYWZkIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI0MiI+anVzdCBmb3IgeW91LCBBbWFsLiDimaE8L3RleHQ+PGNpcmNsZSBjeD0iNDgwIiBjeT0iNDA1IiByPSIzOCIgZmlsbD0iI2ZmZjBmNSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjMiLz48cGF0aCBkPSJNNDcwIDM4NCBMNDcwIDQyNiBMNTAyIDQwNSBaIiBmaWxsPSIjYjg0NDcwIi8+PHRleHQgeD0iNDgwIiB5PSI0NzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmY4ZmIiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE3IiBsZXR0ZXItc3BhY2luZz0iMyI+VEFQIFRPIFBMQVk8L3RleHQ+PC9zdmc+" style="display:none"><source src="assets/intro-love-video.mp4" type="video/mp4">Your browser does not support MP4 video.</video>
+  </div>
   <p style="font-size:13px;margin-top:0">A little moving memory before you enter our story ♡</p>
   <div class="open-actions"><button class="btn" onclick="enterStory()">Open our little world ♡</button><button class="btn light" onclick="playIntro()">Play our special video</button></div>
  </div>
@@ -204,7 +207,7 @@ function openFinalLetter(){const env=document.querySelector('.envelope');env.cla
 function openNote(title,body){openModal('A FOLDED LITTLE LETTER',title,body)}
 function closeModal(){const modal=document.getElementById('modal');if(!modal.classList.contains('show'))return;modal.classList.remove('show');document.body.classList.remove('modal-open');document.body.style.top='';window.scrollTo(0,modalReturnY)}
 function enterStory(){document.getElementById('opening').classList.add('hide');document.documentElement.style.overflowY='auto';document.body.style.overflowY='auto';document.body.style.overflowX='hidden';setTimeout(()=>document.getElementById('opening').remove(),900)}
-function playIntro(){const v=document.getElementById('openingVideo');v.scrollIntoView({behavior:'smooth',block:'center'});const p=v.play();if(p&&p.catch)p.catch(()=>{v.controls=true;v.focus()})}
+function playIntro(){const v=document.getElementById('openingVideo'),cover=document.getElementById('introVideoCover');v.style.display='block';v.controls=true;if(cover)cover.style.display='none';v.scrollIntoView({behavior:'smooth',block:'center'});const p=v.play();if(p&&p.catch)p.catch(()=>{v.focus()})}
 function playMemoryVideo(){const v=document.getElementById('mainMemoryVideo');const cover=document.getElementById('videoCover');v.style.display='block';v.controls=true;if(cover)cover.style.display='none';v.scrollIntoView({behavior:'smooth',block:'center'});const p=v.play();if(p&&p.catch)p.catch(()=>{v.focus()})}
 for(const v of document.querySelectorAll('video')){v.addEventListener('error',()=>{const msg=document.createElement('p');msg.className='video-error';msg.textContent='If the video does not start, please check your internet connection and tap play again.';v.insertAdjacentElement('afterend',msg)},{once:true});v.addEventListener('click',()=>{if(v.paused){const p=v.play();if(p&&p.catch)p.catch(()=>{})}},{passive:true})}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
@@ -232,4 +235,18 @@ setInterval(floatHeart,950);
 .envelope-seal{background:radial-gradient(circle at 35% 30%,#f8c1d3,#d84980)!important;border:2px solid #f9cbd9!important}
 .envelope-tap{color:#8e365d!important}
 @media(max-width:720px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.memory-note{min-height:170px;padding:18px 12px}.memory-note strong{font-size:16px}.modal-img{max-height:42vh}}
+</style>
+
+<style>
+.intro-video-stage{width:min(100%,460px);margin:10px auto 18px}
+.intro-video-cover{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;border:3px solid #fff0f5;border-radius:19px;overflow:hidden;background:radial-gradient(circle at 18% 15%,#f9dce6 0,transparent 32%),linear-gradient(135deg,#f2b7cb,#dc7fa2 58%,#c95f89);color:white;cursor:pointer;box-shadow:0 10px 28px #8b315322;text-align:center}
+.intro-video-cover:before,.intro-video-cover:after{content:"♡";position:absolute;color:#fff5f8;opacity:.35;font:80px Georgia;pointer-events:none}
+.intro-video-cover:before{left:7%;top:5%}.intro-video-cover:after{right:7%;bottom:0}
+.intro-video-cover:hover{filter:brightness(1.04)}
+.intro-video-note{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px;text-shadow:0 2px 10px #35102499}
+.intro-video-note small{font:10px Arial;letter-spacing:.16em}
+.intro-video-note strong{font:normal clamp(15px,3.6vw,20px)/1.45 Georgia,serif}
+.intro-video-note em{font:italic 11px Georgia}
+.intro-video-play{width:43px;height:43px;border-radius:50%;display:grid;place-items:center;padding-left:3px;background:#f8c5d8;color:#8c3157;font:18px Arial;box-shadow:0 5px 18px #3d102b55;border:2px solid #fff2f7}
+@media(max-width:600px){.intro-video-cover{aspect-ratio:16/10}.intro-video-note{gap:6px}.intro-video-play{width:39px;height:39px}}
 </style>
