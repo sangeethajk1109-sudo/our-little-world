@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f8e8ed">
+<meta name="theme-color" content="#f2b8d0">
+<meta name="description" content="A little romantic world made with love, just for Amal.">
 <title>Our Little World ♡</title>
 <style>
 :root{--pink:#f5dce5;--rose:#bd718b;--deep:#75485b;--cream:#fffaf7;--ink:#654653;--line:#ead0d9;--shadow:0 14px 40px #8f52651c}
@@ -44,9 +45,38 @@ section{padding:70px 0 8px;scroll-margin-top:25px}.section-head{text-align:cente
 .video-card p{text-align:center;font:14px/1.6 Arial,sans-serif;color:#8b6876;margin:12px 4px 2px}
 @media(max-width:700px){.media-gallery{grid-template-columns:repeat(2,1fr)}}
 
+
+/* Rani-pink romantic refresh */
+:root{--pink:#f4b5cc;--rose:#d63378;--deep:#7d1748;--cream:#fff8fb;--ink:#71334f;--line:#f0bfd2;--shadow:0 18px 48px #9f24521f}
+body{background:radial-gradient(circle at 8% 8%,#fff 0,transparent 24%),radial-gradient(circle at 90% 28%,#ffd3e3 0,transparent 25%),linear-gradient(135deg,#fff7fa 0%,#f9d5e3 45%,#f2b8d0 100%);background-attachment:fixed}
+.hero{background:linear-gradient(135deg,#fff5f9e8,#f6c2d8e8 55%,#eaa3c2e8),radial-gradient(ellipse at center,#fff,#f3d9e3);border-color:#edb2ca}
+.hero h1,.section-head h2{ text-shadow:0 4px 18px #a72b5a12}
+.btn{background:linear-gradient(135deg,#e94d91,#bd1e65);box-shadow:0 9px 22px #bd1e6538;transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 13px 26px #bd1e6545}
+.nav a{transition:background .2s,transform .2s}.nav a:hover{background:#ffe5ef;transform:translateY(-2px)}
+.paper,.story-card,.env,.memory{box-shadow:0 14px 36px #9f24521b}
+.memory{transition:transform .35s ease,box-shadow .35s ease;animation:photoFloat 6s ease-in-out infinite;animation-delay:calc(var(--i,0)*-.55s)}
+.memory:nth-child(even){animation-delay:-2.5s}
+.memory:hover{transform:translateY(-8px) rotate(0deg) scale(1.025);box-shadow:0 20px 42px #9f245230;z-index:2}
+.memory img{transition:transform .6s ease}.memory:hover img{transform:scale(1.04)}
+@keyframes photoFloat{0%,100%{translate:0 0}50%{translate:0 -5px}}
+.opening{background:radial-gradient(circle at 20% 15%,#fff 0,transparent 28%),linear-gradient(145deg,#fff4f8,#f5c4d9 58%,#eaa1c1)}
+.open-card{border-color:#e9a9c3;box-shadow:0 24px 70px #9f24523b}
+.open-heart{color:#d63378}
+.surprise-heart{color:#d63378}
+.floating-hearts{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:9998}
+.float-heart{position:absolute;bottom:-45px;color:#d63378;opacity:0;animation:floatUp var(--duration,10s) linear forwards;text-shadow:0 4px 12px #d6337830}
+@keyframes floatUp{0%{transform:translateY(0) rotate(0deg) scale(.65);opacity:0}12%{opacity:.42}80%{opacity:.32}100%{transform:translateY(-115vh) rotate(35deg) scale(1.2);opacity:0}}
+.hero:before,.hero:after{animation:softPulse 5s ease-in-out infinite}
+@keyframes softPulse{50%{transform:scale(1.12) rotate(8deg);opacity:.34}}
+.section-head{animation:fade .8s both}
+@media(max-width:700px){.media-gallery{gap:11px}.memory{padding:7px 7px 12px}.memory figcaption{font-size:12px}.hero{background:linear-gradient(145deg,#fff5f9,#f4c1d7)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
 </style>
 </head>
 <body>
+<div class="floating-hearts" id="floatingHearts" aria-hidden="true"></div>
 
 <div class="opening" id="openingScreen">
   <div class="open-card">
@@ -122,26 +152,20 @@ I love you more than these words can hold. ♡</div><div class="sign">Forever yo
 <label class="dream"><input type="checkbox"> Keep choosing each other, every day</label>
 </div><p class="tiny" style="text-align:center;margin:22px 0 0">Tick them off as we make them real. More dreams to come… ♡</p></div></section>
 
-<section id="memories"><div class="section-head"><div class="eyebrow">little moments, kept close</div><h2>Photos & memories</h2><p>Add your favourite pictures here. Choose photos from your phone and they'll appear in your little gallery on this device.</p></div>
+<section id="memories"><div class="section-head"><div class="eyebrow">little moments, kept close</div><h2>Our Photos & Memories</h2><p>Every picture holds a tiny piece of us. A little gallery of my favourite person and our favourite moments. ♡</p></div>
 <div class="media-gallery" id="gallery">
-<figure class="memory" style="--tilt:-1deg"><img src="assets/our-selfie.png" alt="Our selfie together"><figcaption>A little moment, a lot of happiness ♡</figcaption></figure>
-<figure class="memory" style="--tilt:1deg"><img src="assets/black-white-moments.png" alt="Black and white portraits"><figcaption>Two portraits, one favourite story</figcaption></figure>
-<figure class="memory" style="--tilt:-1.2deg"><img src="assets/watercolour-us.jpeg" alt="Watercolour couple portrait"><figcaption>A little piece of our world</figcaption></figure>
-<figure class="memory" style="--tilt:1deg"><img src="assets/together.jpeg" alt="Couple standing together"><figcaption>One day, all our moments will be real hugs</figcaption></figure>
-<figure class="memory" style="--tilt:-.8deg"><img src="assets/hearts.jpeg" alt="Couple with heart lights"><figcaption>My favourite kind of together</figcaption></figure>
-<figure class="memory" style="--tilt:1.2deg"><img src="assets/our-stencil.jpeg" alt="Our stencil portrait"><figcaption>A little art, a lot of love</figcaption></figure>
-<figure class="memory" style="--tilt:1deg"><img src="assets/video-call-one.png" alt="Video call memory"><figcaption>The calls that make the distance softer</figcaption></figure>
-<figure class="memory" style="--tilt:-1deg"><img src="assets/video-call-two.png" alt="Video call memory"><figcaption>Even the sleepy calls are special</figcaption></figure>
-<figure class="memory" style="--tilt:.7deg"><img src="assets/close-up.jpeg" alt="Black and white close-up portrait"><figcaption>A moment I want to keep close</figcaption></figure>
+  <figure class="memory" style="--tilt:-1.2deg"><img src="assets/our-selfie.png" alt="Our selfie together"><figcaption>My favourite kind of happiness ♡</figcaption></figure>
+  <figure class="memory" style="--tilt:1deg"><img src="assets/black-white-moments.png" alt="Our black and white portraits"><figcaption>Two portraits, one favourite story</figcaption></figure>
+  <figure class="memory" style="--tilt:-.7deg"><img src="assets/watercolour-us.jpeg" alt="Watercolour couple portrait"><figcaption>A little piece of our world</figcaption></figure>
+  <figure class="memory" style="--tilt:1.3deg"><img src="assets/together.jpeg" alt="Us together in traditional outfits"><figcaption>One day, a lifetime of moments</figcaption></figure>
+  <figure class="memory" style="--tilt:-1deg"><img src="assets/hearts.jpeg" alt="Couple surrounded by hearts"><figcaption>My favourite person, always</figcaption></figure>
+  <figure class="memory" style="--tilt:.8deg"><img src="assets/our-stencil.png" alt="Our stencil portrait"><figcaption>A little art, a lot of love</figcaption></figure>
+  <figure class="memory" style="--tilt:-1.1deg"><img src="assets/video-call-one.png" alt="A video call memory"><figcaption>Calls that make the distance softer</figcaption></figure>
+  <figure class="memory" style="--tilt:1deg"><img src="assets/video-call-two.png" alt="Another video call memory"><figcaption>Even sleepy calls are special</figcaption></figure>
+  <figure class="memory" style="--tilt:-.8deg"><img src="assets/amal-portrait.jpeg" alt="Amal smiling outdoors"><figcaption>That smile. My weakness. ♡</figcaption></figure>
+  <figure class="memory" style="--tilt:1.1deg"><img src="assets/amal-outdoors.jpeg" alt="Amal on a sunny walk"><figcaption>My favourite view, even from miles away</figcaption></figure>
 </div>
-<div class="video-card">
-  <video controls playsinline preload="metadata" poster="assets/our-selfie.png">
-    <source src="assets/our-video.mp4" type="video/mp4">
-    Your browser does not support this video.
-  </video>
-  <p>A little moving memory, just for us. Press play when you're ready ♡</p>
-</div>
-<div class="gallery-note">These photos and the video are included in this website folder, so they can be shared together when you publish the whole folder.</div>
+<div class="gallery-note">A little collection of us, saved in one place. ♡</div>
 </section>
 
 <section id="surprise"><div class="section-head"><div class="eyebrow">one last little thing</div><h2>A tiny surprise for you</h2><p>Because you deserve to be reminded, again and again.</p></div>
@@ -186,5 +210,25 @@ function openNote(i){document.getElementById('noteText').textContent=notes[i];co
 const surprises=["You are my favourite person in this whole wide world.","If home were a person, it would feel a little like you.","A thousand miles, and still my heart finds you.","I can't wait for all the ordinary days we'll make extraordinary.","You are loved on your best days and your messy days too.","One day, no screens. Just us, together. Until then, here's a kiss. ♡","Thank you for being my unexpected, beautiful happiness.","I am so lucky I get to do life with you."];
 let surpriseIndex=0;function surprise(){surpriseIndex=(surpriseIndex+1)%surprises.length;document.getElementById('surpriseMessage').textContent=surprises[surpriseIndex]}
 function addPhoto(input){if(!input.files||!input.files[0])return;const file=input.files[0];const reader=new FileReader();reader.onload=e=>{const tile=input.parentElement;let img=tile.querySelector('img');if(!img){img=document.createElement('img');tile.appendChild(img)}img.src=e.target.result;tile.querySelector('span').style.display='none'};reader.readAsDataURL(file)}
+
+/* Gentle floating hearts in the background */
+(function(){
+  const layer=document.getElementById('floatingHearts');
+  if(!layer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const symbols=['♡','♥','✧'];
+  function heart(){
+    const el=document.createElement('span');
+    el.className='float-heart';
+    el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    el.style.left=(Math.random()*100)+'%';
+    el.style.fontSize=(12+Math.random()*20)+'px';
+    el.style.setProperty('--duration',(8+Math.random()*7)+'s');
+    layer.appendChild(el);
+    setTimeout(()=>el.remove(),16000);
+  }
+  for(let i=0;i<9;i++) setTimeout(heart,i*650);
+  setInterval(heart,1250);
+})();
+
 </script>
 </body></html>
